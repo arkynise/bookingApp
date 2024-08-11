@@ -379,6 +379,138 @@ class Salarie
     #[ORM\OneToMany(targetEntity: Diffusionsalprest::class, mappedBy: 'idSalarie')]
     private Collection $diffusionsalprests;
 
+    /**
+     * @var Collection<int, Documentsal>
+     */
+    #[ORM\OneToMany(targetEntity: Documentsal::class, mappedBy: 'idSalarie')]
+    private Collection $documentsals;
+
+    /**
+     * @var Collection<int, Failedautocompteapi>
+     */
+    #[ORM\OneToMany(targetEntity: Failedautocompteapi::class, mappedBy: 'salarie')]
+    private Collection $failedautocompteapis;
+
+    /**
+     * @var Collection<int, Fraffectation>
+     */
+    #[ORM\OneToMany(targetEntity: Fraffectation::class, mappedBy: 'idSalarie')]
+    private Collection $fraffectations;
+
+    /**
+     * @var Collection<int, Imagebooking>
+     */
+    #[ORM\OneToMany(targetEntity: Imagebooking::class, mappedBy: 'IdSalarie')]
+    private Collection $imagebookings;
+
+    /**
+     * @var Collection<int, Langueparsalarie>
+     */
+    #[ORM\OneToMany(targetEntity: Langueparsalarie::class, mappedBy: 'idSalarie')]
+    private Collection $langueparsalaries;
+
+    /**
+     * @var Collection<int, Newnotification>
+     */
+    #[ORM\OneToMany(targetEntity: Newnotification::class, mappedBy: 'idSalarie')]
+    private Collection $newnotifications;
+
+    /**
+     * @var Collection<int, Obseventpanier>
+     */
+    #[ORM\OneToMany(targetEntity: Obseventpanier::class, mappedBy: 'IdSalarie')]
+    private Collection $obseventpaniers;
+
+    /**
+     * @var Collection<int, Retourmsdispo>
+     */
+    #[ORM\OneToMany(targetEntity: Retourmsdispo::class, mappedBy: 'idSalarie')]
+    private Collection $retourmsdispos;
+
+    /**
+     * @var Collection<int, Paniermsdispo>
+     */
+    #[ORM\OneToMany(targetEntity: Paniermsdispo::class, mappedBy: 'idSalarie')]
+    private Collection $paniermsdispos;
+
+    /**
+     * @var Collection<int, Panierpub>
+     */
+    #[ORM\OneToMany(targetEntity: Panierpub::class, mappedBy: 'idSalarie')]
+    private Collection $panierpubs;
+
+    /**
+     * @var Collection<int, Retourpubevent>
+     */
+    #[ORM\OneToMany(targetEntity: Retourpubevent::class, mappedBy: 'idSalarie')]
+    private Collection $retourpubevents;
+
+    /**
+     * @var Collection<int, Panierpubentreprise>
+     */
+    #[ORM\OneToMany(targetEntity: Panierpubentreprise::class, mappedBy: 'idSalarie')]
+    private Collection $panierpubentreprises;
+
+    /**
+     * @var Collection<int, Retourpubentreprise>
+     */
+    #[ORM\OneToMany(targetEntity: Retourpubentreprise::class, mappedBy: 'idSalarie')]
+    private Collection $retourpubentreprises;
+
+    /**
+     * @var Collection<int, Paniersalarie>
+     */
+    #[ORM\OneToMany(targetEntity: Paniersalarie::class, mappedBy: 'idSalarie')]
+    private Collection $paniersalaries;
+
+    /**
+     * @var Collection<int, Panierurgence>
+     */
+    #[ORM\OneToMany(targetEntity: Panierurgence::class, mappedBy: 'idSalarie')]
+    private Collection $panierurgences;
+
+    /**
+     * @var Collection<int, Retoururgenceevent>
+     */
+    #[ORM\OneToMany(targetEntity: Retoururgenceevent::class, mappedBy: 'idSalarie')]
+    private Collection $retoururgenceevents;
+
+    /**
+     * @var Collection<int, Panierurgenceentreprise>
+     */
+    #[ORM\OneToMany(targetEntity: Panierurgenceentreprise::class, mappedBy: 'idSalarie')]
+    private Collection $panierurgenceentreprises;
+
+    /**
+     * @var Collection<int, Retoururgenceentreprise>
+     */
+    #[ORM\OneToMany(targetEntity: Retoururgenceentreprise::class, mappedBy: 'idSalarie')]
+    private Collection $retoururgenceentreprises;
+
+    /**
+     * @var Collection<int, Poppanier>
+     */
+    #[ORM\OneToMany(targetEntity: Poppanier::class, mappedBy: 'idSalarie')]
+    private Collection $poppaniers;
+
+    /**
+     * @var Collection<int, Salexperienceold>
+     */
+    #[ORM\OneToMany(targetEntity: Salexperienceold::class, mappedBy: 'idSalarie')]
+    private Collection $salexperienceolds;
+
+    /**
+     * @var Collection<int, Talonsalarie>
+     */
+    #[ORM\OneToMany(targetEntity: Talonsalarie::class, mappedBy: 'idSalarie')]
+    private Collection $talonsalaries;
+
+    /**
+     * @var Collection<int, Tokenmobile>
+     */
+    #[ORM\OneToMany(targetEntity: Tokenmobile::class, mappedBy: 'idSalarie')]
+    private Collection $tokenmobiles;
+
     public function __construct()
     {
         $this->avisnotations = new ArrayCollection();
@@ -386,6 +518,28 @@ class Salarie
         $this->salarienotes = new ArrayCollection();
         $this->contrats = new ArrayCollection();
         $this->diffusionsalprests = new ArrayCollection();
+        $this->documentsals = new ArrayCollection();
+        $this->failedautocompteapis = new ArrayCollection();
+        $this->fraffectations = new ArrayCollection();
+        $this->imagebookings = new ArrayCollection();
+        $this->langueparsalaries = new ArrayCollection();
+        $this->newnotifications = new ArrayCollection();
+        $this->obseventpaniers = new ArrayCollection();
+        $this->retourmsdispos = new ArrayCollection();
+        $this->paniermsdispos = new ArrayCollection();
+        $this->panierpubs = new ArrayCollection();
+        $this->retourpubevents = new ArrayCollection();
+        $this->panierpubentreprises = new ArrayCollection();
+        $this->retourpubentreprises = new ArrayCollection();
+        $this->paniersalaries = new ArrayCollection();
+        $this->panierurgences = new ArrayCollection();
+        $this->retoururgenceevents = new ArrayCollection();
+        $this->panierurgenceentreprises = new ArrayCollection();
+        $this->retoururgenceentreprises = new ArrayCollection();
+        $this->poppaniers = new ArrayCollection();
+        $this->salexperienceolds = new ArrayCollection();
+        $this->talonsalaries = new ArrayCollection();
+        $this->tokenmobiles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -1867,6 +2021,666 @@ class Salarie
             // set the owning side to null (unless already changed)
             if ($diffusionsalprest->getIdSalarie() === $this) {
                 $diffusionsalprest->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Documentsal>
+     */
+    public function getDocumentsals(): Collection
+    {
+        return $this->documentsals;
+    }
+
+    public function addDocumentsal(Documentsal $documentsal): static
+    {
+        if (!$this->documentsals->contains($documentsal)) {
+            $this->documentsals->add($documentsal);
+            $documentsal->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocumentsal(Documentsal $documentsal): static
+    {
+        if ($this->documentsals->removeElement($documentsal)) {
+            // set the owning side to null (unless already changed)
+            if ($documentsal->getIdSalarie() === $this) {
+                $documentsal->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Failedautocompteapi>
+     */
+    public function getFailedautocompteapis(): Collection
+    {
+        return $this->failedautocompteapis;
+    }
+
+    public function addFailedautocompteapi(Failedautocompteapi $failedautocompteapi): static
+    {
+        if (!$this->failedautocompteapis->contains($failedautocompteapi)) {
+            $this->failedautocompteapis->add($failedautocompteapi);
+            $failedautocompteapi->setSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFailedautocompteapi(Failedautocompteapi $failedautocompteapi): static
+    {
+        if ($this->failedautocompteapis->removeElement($failedautocompteapi)) {
+            // set the owning side to null (unless already changed)
+            if ($failedautocompteapi->getSalarie() === $this) {
+                $failedautocompteapi->setSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Fraffectation>
+     */
+    public function getFraffectations(): Collection
+    {
+        return $this->fraffectations;
+    }
+
+    public function addFraffectation(Fraffectation $fraffectation): static
+    {
+        if (!$this->fraffectations->contains($fraffectation)) {
+            $this->fraffectations->add($fraffectation);
+            $fraffectation->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFraffectation(Fraffectation $fraffectation): static
+    {
+        if ($this->fraffectations->removeElement($fraffectation)) {
+            // set the owning side to null (unless already changed)
+            if ($fraffectation->getIdSalarie() === $this) {
+                $fraffectation->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Imagebooking>
+     */
+    public function getImagebookings(): Collection
+    {
+        return $this->imagebookings;
+    }
+
+    public function addImagebooking(Imagebooking $imagebooking): static
+    {
+        if (!$this->imagebookings->contains($imagebooking)) {
+            $this->imagebookings->add($imagebooking);
+            $imagebooking->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImagebooking(Imagebooking $imagebooking): static
+    {
+        if ($this->imagebookings->removeElement($imagebooking)) {
+            // set the owning side to null (unless already changed)
+            if ($imagebooking->getIdSalarie() === $this) {
+                $imagebooking->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Langueparsalarie>
+     */
+    public function getLangueparsalaries(): Collection
+    {
+        return $this->langueparsalaries;
+    }
+
+    public function addLangueparsalary(Langueparsalarie $langueparsalary): static
+    {
+        if (!$this->langueparsalaries->contains($langueparsalary)) {
+            $this->langueparsalaries->add($langueparsalary);
+            $langueparsalary->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLangueparsalary(Langueparsalarie $langueparsalary): static
+    {
+        if ($this->langueparsalaries->removeElement($langueparsalary)) {
+            // set the owning side to null (unless already changed)
+            if ($langueparsalary->getIdSalarie() === $this) {
+                $langueparsalary->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Newnotification>
+     */
+    public function getNewnotifications(): Collection
+    {
+        return $this->newnotifications;
+    }
+
+    public function addNewnotification(Newnotification $newnotification): static
+    {
+        if (!$this->newnotifications->contains($newnotification)) {
+            $this->newnotifications->add($newnotification);
+            $newnotification->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNewnotification(Newnotification $newnotification): static
+    {
+        if ($this->newnotifications->removeElement($newnotification)) {
+            // set the owning side to null (unless already changed)
+            if ($newnotification->getIdSalarie() === $this) {
+                $newnotification->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Obseventpanier>
+     */
+    public function getObseventpaniers(): Collection
+    {
+        return $this->obseventpaniers;
+    }
+
+    public function addObseventpanier(Obseventpanier $obseventpanier): static
+    {
+        if (!$this->obseventpaniers->contains($obseventpanier)) {
+            $this->obseventpaniers->add($obseventpanier);
+            $obseventpanier->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeObseventpanier(Obseventpanier $obseventpanier): static
+    {
+        if ($this->obseventpaniers->removeElement($obseventpanier)) {
+            // set the owning side to null (unless already changed)
+            if ($obseventpanier->getIdSalarie() === $this) {
+                $obseventpanier->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Retourmsdispo>
+     */
+    public function getRetourmsdispos(): Collection
+    {
+        return $this->retourmsdispos;
+    }
+
+    public function addRetourmsdispo(Retourmsdispo $retourmsdispo): static
+    {
+        if (!$this->retourmsdispos->contains($retourmsdispo)) {
+            $this->retourmsdispos->add($retourmsdispo);
+            $retourmsdispo->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRetourmsdispo(Retourmsdispo $retourmsdispo): static
+    {
+        if ($this->retourmsdispos->removeElement($retourmsdispo)) {
+            // set the owning side to null (unless already changed)
+            if ($retourmsdispo->getIdSalarie() === $this) {
+                $retourmsdispo->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Paniermsdispo>
+     */
+    public function getPaniermsdispos(): Collection
+    {
+        return $this->paniermsdispos;
+    }
+
+    public function addPaniermsdispo(Paniermsdispo $paniermsdispo): static
+    {
+        if (!$this->paniermsdispos->contains($paniermsdispo)) {
+            $this->paniermsdispos->add($paniermsdispo);
+            $paniermsdispo->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaniermsdispo(Paniermsdispo $paniermsdispo): static
+    {
+        if ($this->paniermsdispos->removeElement($paniermsdispo)) {
+            // set the owning side to null (unless already changed)
+            if ($paniermsdispo->getIdSalarie() === $this) {
+                $paniermsdispo->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Panierpub>
+     */
+    public function getPanierpubs(): Collection
+    {
+        return $this->panierpubs;
+    }
+
+    public function addPanierpub(Panierpub $panierpub): static
+    {
+        if (!$this->panierpubs->contains($panierpub)) {
+            $this->panierpubs->add($panierpub);
+            $panierpub->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanierpub(Panierpub $panierpub): static
+    {
+        if ($this->panierpubs->removeElement($panierpub)) {
+            // set the owning side to null (unless already changed)
+            if ($panierpub->getIdSalarie() === $this) {
+                $panierpub->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Retourpubevent>
+     */
+    public function getRetourpubevents(): Collection
+    {
+        return $this->retourpubevents;
+    }
+
+    public function addRetourpubevent(Retourpubevent $retourpubevent): static
+    {
+        if (!$this->retourpubevents->contains($retourpubevent)) {
+            $this->retourpubevents->add($retourpubevent);
+            $retourpubevent->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRetourpubevent(Retourpubevent $retourpubevent): static
+    {
+        if ($this->retourpubevents->removeElement($retourpubevent)) {
+            // set the owning side to null (unless already changed)
+            if ($retourpubevent->getIdSalarie() === $this) {
+                $retourpubevent->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Panierpubentreprise>
+     */
+    public function getPanierpubentreprises(): Collection
+    {
+        return $this->panierpubentreprises;
+    }
+
+    public function addPanierpubentreprise(Panierpubentreprise $panierpubentreprise): static
+    {
+        if (!$this->panierpubentreprises->contains($panierpubentreprise)) {
+            $this->panierpubentreprises->add($panierpubentreprise);
+            $panierpubentreprise->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanierpubentreprise(Panierpubentreprise $panierpubentreprise): static
+    {
+        if ($this->panierpubentreprises->removeElement($panierpubentreprise)) {
+            // set the owning side to null (unless already changed)
+            if ($panierpubentreprise->getIdSalarie() === $this) {
+                $panierpubentreprise->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Retourpubentreprise>
+     */
+    public function getRetourpubentreprises(): Collection
+    {
+        return $this->retourpubentreprises;
+    }
+
+    public function addRetourpubentreprise(Retourpubentreprise $retourpubentreprise): static
+    {
+        if (!$this->retourpubentreprises->contains($retourpubentreprise)) {
+            $this->retourpubentreprises->add($retourpubentreprise);
+            $retourpubentreprise->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRetourpubentreprise(Retourpubentreprise $retourpubentreprise): static
+    {
+        if ($this->retourpubentreprises->removeElement($retourpubentreprise)) {
+            // set the owning side to null (unless already changed)
+            if ($retourpubentreprise->getIdSalarie() === $this) {
+                $retourpubentreprise->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Paniersalarie>
+     */
+    public function getPaniersalaries(): Collection
+    {
+        return $this->paniersalaries;
+    }
+
+    public function addPaniersalary(Paniersalarie $paniersalary): static
+    {
+        if (!$this->paniersalaries->contains($paniersalary)) {
+            $this->paniersalaries->add($paniersalary);
+            $paniersalary->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removePaniersalary(Paniersalarie $paniersalary): static
+    {
+        if ($this->paniersalaries->removeElement($paniersalary)) {
+            // set the owning side to null (unless already changed)
+            if ($paniersalary->getIdSalarie() === $this) {
+                $paniersalary->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Panierurgence>
+     */
+    public function getPanierurgences(): Collection
+    {
+        return $this->panierurgences;
+    }
+
+    public function addPanierurgence(Panierurgence $panierurgence): static
+    {
+        if (!$this->panierurgences->contains($panierurgence)) {
+            $this->panierurgences->add($panierurgence);
+            $panierurgence->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanierurgence(Panierurgence $panierurgence): static
+    {
+        if ($this->panierurgences->removeElement($panierurgence)) {
+            // set the owning side to null (unless already changed)
+            if ($panierurgence->getIdSalarie() === $this) {
+                $panierurgence->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Retoururgenceevent>
+     */
+    public function getRetoururgenceevents(): Collection
+    {
+        return $this->retoururgenceevents;
+    }
+
+    public function addRetoururgenceevent(Retoururgenceevent $retoururgenceevent): static
+    {
+        if (!$this->retoururgenceevents->contains($retoururgenceevent)) {
+            $this->retoururgenceevents->add($retoururgenceevent);
+            $retoururgenceevent->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRetoururgenceevent(Retoururgenceevent $retoururgenceevent): static
+    {
+        if ($this->retoururgenceevents->removeElement($retoururgenceevent)) {
+            // set the owning side to null (unless already changed)
+            if ($retoururgenceevent->getIdSalarie() === $this) {
+                $retoururgenceevent->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Panierurgenceentreprise>
+     */
+    public function getPanierurgenceentreprises(): Collection
+    {
+        return $this->panierurgenceentreprises;
+    }
+
+    public function addPanierurgenceentreprise(Panierurgenceentreprise $panierurgenceentreprise): static
+    {
+        if (!$this->panierurgenceentreprises->contains($panierurgenceentreprise)) {
+            $this->panierurgenceentreprises->add($panierurgenceentreprise);
+            $panierurgenceentreprise->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanierurgenceentreprise(Panierurgenceentreprise $panierurgenceentreprise): static
+    {
+        if ($this->panierurgenceentreprises->removeElement($panierurgenceentreprise)) {
+            // set the owning side to null (unless already changed)
+            if ($panierurgenceentreprise->getIdSalarie() === $this) {
+                $panierurgenceentreprise->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Retoururgenceentreprise>
+     */
+    public function getRetoururgenceentreprises(): Collection
+    {
+        return $this->retoururgenceentreprises;
+    }
+
+    public function addRetoururgenceentreprise(Retoururgenceentreprise $retoururgenceentreprise): static
+    {
+        if (!$this->retoururgenceentreprises->contains($retoururgenceentreprise)) {
+            $this->retoururgenceentreprises->add($retoururgenceentreprise);
+            $retoururgenceentreprise->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRetoururgenceentreprise(Retoururgenceentreprise $retoururgenceentreprise): static
+    {
+        if ($this->retoururgenceentreprises->removeElement($retoururgenceentreprise)) {
+            // set the owning side to null (unless already changed)
+            if ($retoururgenceentreprise->getIdSalarie() === $this) {
+                $retoururgenceentreprise->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Poppanier>
+     */
+    public function getPoppaniers(): Collection
+    {
+        return $this->poppaniers;
+    }
+
+    public function addPoppanier(Poppanier $poppanier): static
+    {
+        if (!$this->poppaniers->contains($poppanier)) {
+            $this->poppaniers->add($poppanier);
+            $poppanier->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removePoppanier(Poppanier $poppanier): static
+    {
+        if ($this->poppaniers->removeElement($poppanier)) {
+            // set the owning side to null (unless already changed)
+            if ($poppanier->getIdSalarie() === $this) {
+                $poppanier->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Salexperienceold>
+     */
+    public function getSalexperienceolds(): Collection
+    {
+        return $this->salexperienceolds;
+    }
+
+    public function addSalexperienceold(Salexperienceold $salexperienceold): static
+    {
+        if (!$this->salexperienceolds->contains($salexperienceold)) {
+            $this->salexperienceolds->add($salexperienceold);
+            $salexperienceold->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSalexperienceold(Salexperienceold $salexperienceold): static
+    {
+        if ($this->salexperienceolds->removeElement($salexperienceold)) {
+            // set the owning side to null (unless already changed)
+            if ($salexperienceold->getIdSalarie() === $this) {
+                $salexperienceold->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Talonsalarie>
+     */
+    public function getTalonsalaries(): Collection
+    {
+        return $this->talonsalaries;
+    }
+
+    public function addTalonsalary(Talonsalarie $talonsalary): static
+    {
+        if (!$this->talonsalaries->contains($talonsalary)) {
+            $this->talonsalaries->add($talonsalary);
+            $talonsalary->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTalonsalary(Talonsalarie $talonsalary): static
+    {
+        if ($this->talonsalaries->removeElement($talonsalary)) {
+            // set the owning side to null (unless already changed)
+            if ($talonsalary->getIdSalarie() === $this) {
+                $talonsalary->setIdSalarie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tokenmobile>
+     */
+    public function getTokenmobiles(): Collection
+    {
+        return $this->tokenmobiles;
+    }
+
+    public function addTokenmobile(Tokenmobile $tokenmobile): static
+    {
+        if (!$this->tokenmobiles->contains($tokenmobile)) {
+            $this->tokenmobiles->add($tokenmobile);
+            $tokenmobile->setIdSalarie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTokenmobile(Tokenmobile $tokenmobile): static
+    {
+        if ($this->tokenmobiles->removeElement($tokenmobile)) {
+            // set the owning side to null (unless already changed)
+            if ($tokenmobile->getIdSalarie() === $this) {
+                $tokenmobile->setIdSalarie(null);
             }
         }
 

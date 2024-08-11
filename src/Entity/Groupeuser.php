@@ -43,11 +43,46 @@ class Groupeuser
     #[ORM\OneToMany(targetEntity: Catalogue::class, mappedBy: 'groupe')]
     private Collection $catalogues;
 
+    /**
+     * @var Collection<int, Missiondispo>
+     */
+    #[ORM\OneToMany(targetEntity: Missiondispo::class, mappedBy: 'groupe')]
+    private Collection $missiondispos;
+
+    /**
+     * @var Collection<int, Pubevent>
+     */
+    #[ORM\OneToMany(targetEntity: Pubevent::class, mappedBy: 'groupe')]
+    private Collection $pubevents;
+
+    /**
+     * @var Collection<int, Pubentreprise>
+     */
+    #[ORM\OneToMany(targetEntity: Pubentreprise::class, mappedBy: 'groupe')]
+    private Collection $pubentreprises;
+
+    /**
+     * @var Collection<int, Urgenceevent>
+     */
+    #[ORM\OneToMany(targetEntity: Urgenceevent::class, mappedBy: 'groupe')]
+    private Collection $urgenceevents;
+
+    /**
+     * @var Collection<int, Messagepop>
+     */
+    #[ORM\OneToMany(targetEntity: Messagepop::class, mappedBy: 'groupe')]
+    private Collection $messagepops;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
         $this->userGroupeusers = new ArrayCollection();
         $this->catalogues = new ArrayCollection();
+        $this->missiondispos = new ArrayCollection();
+        $this->pubevents = new ArrayCollection();
+        $this->pubentreprises = new ArrayCollection();
+        $this->urgenceevents = new ArrayCollection();
+        $this->messagepops = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -175,6 +210,156 @@ class Groupeuser
             // set the owning side to null (unless already changed)
             if ($catalogue->getGroupe() === $this) {
                 $catalogue->setGroupe(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Missiondispo>
+     */
+    public function getMissiondispos(): Collection
+    {
+        return $this->missiondispos;
+    }
+
+    public function addMissiondispo(Missiondispo $missiondispo): static
+    {
+        if (!$this->missiondispos->contains($missiondispo)) {
+            $this->missiondispos->add($missiondispo);
+            $missiondispo->setGroupe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMissiondispo(Missiondispo $missiondispo): static
+    {
+        if ($this->missiondispos->removeElement($missiondispo)) {
+            // set the owning side to null (unless already changed)
+            if ($missiondispo->getGroupe() === $this) {
+                $missiondispo->setGroupe(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Pubevent>
+     */
+    public function getPubevents(): Collection
+    {
+        return $this->pubevents;
+    }
+
+    public function addPubevent(Pubevent $pubevent): static
+    {
+        if (!$this->pubevents->contains($pubevent)) {
+            $this->pubevents->add($pubevent);
+            $pubevent->setGroupe($this);
+        }
+
+        return $this;
+    }
+
+    public function removePubevent(Pubevent $pubevent): static
+    {
+        if ($this->pubevents->removeElement($pubevent)) {
+            // set the owning side to null (unless already changed)
+            if ($pubevent->getGroupe() === $this) {
+                $pubevent->setGroupe(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Pubentreprise>
+     */
+    public function getPubentreprises(): Collection
+    {
+        return $this->pubentreprises;
+    }
+
+    public function addPubentreprise(Pubentreprise $pubentreprise): static
+    {
+        if (!$this->pubentreprises->contains($pubentreprise)) {
+            $this->pubentreprises->add($pubentreprise);
+            $pubentreprise->setGroupe($this);
+        }
+
+        return $this;
+    }
+
+    public function removePubentreprise(Pubentreprise $pubentreprise): static
+    {
+        if ($this->pubentreprises->removeElement($pubentreprise)) {
+            // set the owning side to null (unless already changed)
+            if ($pubentreprise->getGroupe() === $this) {
+                $pubentreprise->setGroupe(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Urgenceevent>
+     */
+    public function getUrgenceevents(): Collection
+    {
+        return $this->urgenceevents;
+    }
+
+    public function addUrgenceevent(Urgenceevent $urgenceevent): static
+    {
+        if (!$this->urgenceevents->contains($urgenceevent)) {
+            $this->urgenceevents->add($urgenceevent);
+            $urgenceevent->setGroupe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUrgenceevent(Urgenceevent $urgenceevent): static
+    {
+        if ($this->urgenceevents->removeElement($urgenceevent)) {
+            // set the owning side to null (unless already changed)
+            if ($urgenceevent->getGroupe() === $this) {
+                $urgenceevent->setGroupe(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Messagepop>
+     */
+    public function getMessagepops(): Collection
+    {
+        return $this->messagepops;
+    }
+
+    public function addMessagepop(Messagepop $messagepop): static
+    {
+        if (!$this->messagepops->contains($messagepop)) {
+            $this->messagepops->add($messagepop);
+            $messagepop->setGroupe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessagepop(Messagepop $messagepop): static
+    {
+        if ($this->messagepops->removeElement($messagepop)) {
+            // set the owning side to null (unless already changed)
+            if ($messagepop->getGroupe() === $this) {
+                $messagepop->setGroupe(null);
             }
         }
 

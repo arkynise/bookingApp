@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MessageRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,17 @@ class Message
 
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $PubMsg = null;
+
+    /**
+     * @var Collection<int, Messageprestation>
+     */
+    #[ORM\OneToMany(targetEntity: Messageprestation::class, mappedBy: 'idMsg')]
+    private Collection $messageprestations;
+
+    public function __construct()
+    {
+        $this->messageprestations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +103,36 @@ class Message
     public function setPubMsg(int $PubMsg): static
     {
         $this->PubMsg = $PubMsg;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Messageprestation>
+     */
+    public function getMessageprestations(): Collection
+    {
+        return $this->messageprestations;
+    }
+
+    public function addMessageprestation(Messageprestation $messageprestation): static
+    {
+        if (!$this->messageprestations->contains($messageprestation)) {
+            $this->messageprestations->add($messageprestation);
+            $messageprestation->setIdMsg($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessageprestation(Messageprestation $messageprestation): static
+    {
+        if ($this->messageprestations->removeElement($messageprestation)) {
+            // set the owning side to null (unless already changed)
+            if ($messageprestation->getIdMsg() === $this) {
+                $messageprestation->setIdMsg(null);
+            }
+        }
 
         return $this;
     }

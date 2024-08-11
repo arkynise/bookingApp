@@ -22,10 +22,10 @@ class Agence
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255,name:"Siret")]
     private ?string $Siret = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name:"CodeAPE",length: 255,)]
     private ?string $CodeAPE = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

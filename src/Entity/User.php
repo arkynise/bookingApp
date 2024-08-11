@@ -675,27 +675,9 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
         return $this->events;
     }
 
-    public function addEvent(Event $event): static
-    {
-        if (!$this->events->contains($event)) {
-            $this->events->add($event);
-            $event->setIdUserWrite($this);
-        }
 
-        return $this;
-    }
 
-    public function removeEvent(Event $event): static
-    {
-        if ($this->events->removeElement($event)) {
-            // set the owning side to null (unless already changed)
-            if ($event->getIdUserWrite() === $this) {
-                $event->setIdUserWrite(null);
-            }
-        }
 
-        return $this;
-    }
 
     /**
      * @return Collection<int, Devis>
@@ -705,25 +687,6 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
         return $this->devis;
     }
 
-    public function addDevi(Devis $devi): static
-    {
-        if (!$this->devis->contains($devi)) {
-            $this->devis->add($devi);
-            $devi->setIdUserWrite($this);
-        }
 
-        return $this;
-    }
 
-    public function removeDevi(Devis $devi): static
-    {
-        if ($this->devis->removeElement($devi)) {
-            // set the owning side to null (unless already changed)
-            if ($devi->getIdUserWrite() === $this) {
-                $devi->setIdUserWrite(null);
-            }
-        }
-
-        return $this;
-    }
 }

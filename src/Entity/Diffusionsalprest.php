@@ -46,6 +46,9 @@ class Diffusionsalprest
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateRetour = null;
 
+    #[ORM\ManyToOne(inversedBy: 'diffusionsalprests')]
+    private ?prestation $idPrestation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -169,6 +172,18 @@ class Diffusionsalprest
     public function setDateRetour(?\DateTimeInterface $dateRetour): static
     {
         $this->dateRetour = $dateRetour;
+
+        return $this;
+    }
+
+    public function getIdPrestation(): ?prestation
+    {
+        return $this->idPrestation;
+    }
+
+    public function setIdPrestation(?prestation $idPrestation): static
+    {
+        $this->idPrestation = $idPrestation;
 
         return $this;
     }

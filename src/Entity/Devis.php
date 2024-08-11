@@ -198,9 +198,23 @@ class Devis
     #[ORM\OneToMany(targetEntity: Devisuser::class, mappedBy: 'Devis')]
     private Collection $devisusers;
 
+    /**
+     * @var Collection<int, Frais>
+     */
+    #[ORM\OneToMany(targetEntity: Frais::class, mappedBy: 'idDevis')]
+    private Collection $frais;
+
+    /**
+     * @var Collection<int, Prestationdevis>
+     */
+    #[ORM\OneToMany(targetEntity: Prestationdevis::class, mappedBy: 'idDevis')]
+    private Collection $prestationdevis;
+
     public function __construct()
     {
         $this->devisusers = new ArrayCollection();
+        $this->frais = new ArrayCollection();
+        $this->prestationdevis = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -930,6 +944,66 @@ class Devis
             // set the owning side to null (unless already changed)
             if ($devisuser->getDevis() === $this) {
                 $devisuser->setDevis(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Frais>
+     */
+    public function getFrais(): Collection
+    {
+        return $this->frais;
+    }
+
+    public function addFrai(Frais $frai): static
+    {
+        if (!$this->frais->contains($frai)) {
+            $this->frais->add($frai);
+            $frai->setIdDevis($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFrai(Frais $frai): static
+    {
+        if ($this->frais->removeElement($frai)) {
+            // set the owning side to null (unless already changed)
+            if ($frai->getIdDevis() === $this) {
+                $frai->setIdDevis(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Prestationdevis>
+     */
+    public function getPrestationdevis(): Collection
+    {
+        return $this->prestationdevis;
+    }
+
+    public function addPrestationdevi(Prestationdevis $prestationdevi): static
+    {
+        if (!$this->prestationdevis->contains($prestationdevi)) {
+            $this->prestationdevis->add($prestationdevi);
+            $prestationdevi->setIdDevis($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrestationdevi(Prestationdevis $prestationdevi): static
+    {
+        if ($this->prestationdevis->removeElement($prestationdevi)) {
+            // set the owning side to null (unless already changed)
+            if ($prestationdevi->getIdDevis() === $this) {
+                $prestationdevi->setIdDevis(null);
             }
         }
 

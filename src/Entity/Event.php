@@ -162,6 +162,48 @@ class Event
     #[ORM\OneToMany(targetEntity: Diffusionsalprest::class, mappedBy: 'IdEvent')]
     private Collection $diffusionsalprests;
 
+    /**
+     * @var Collection<int, Ursoperation>
+     */
+    #[ORM\OneToMany(targetEntity: Ursoperation::class, mappedBy: 'IdEvent')]
+    private Collection $ursoperations;
+
+    /**
+     * @var Collection<int, Fraffectation>
+     */
+    #[ORM\OneToMany(targetEntity: Fraffectation::class, mappedBy: 'IdEvent')]
+    private Collection $fraffectations;
+
+    /**
+     * @var Collection<int, Connexionmslgevent>
+     */
+    #[ORM\OneToMany(targetEntity: Connexionmslgevent::class, mappedBy: 'IdEvent')]
+    private Collection $connexionmslgevents;
+
+    /**
+     * @var Collection<int, Panier>
+     */
+    #[ORM\OneToMany(targetEntity: Panier::class, mappedBy: 'IdEvent')]
+    private Collection $paniers;
+
+    /**
+     * @var Collection<int, Connexionpanierpub>
+     */
+    #[ORM\OneToMany(targetEntity: Connexionpanierpub::class, mappedBy: 'IdEvent')]
+    private Collection $connexionpanierpubs;
+
+    /**
+     * @var Collection<int, Prestation>
+     */
+    #[ORM\OneToMany(targetEntity: Prestation::class, mappedBy: 'idEvent')]
+    private Collection $prestations;
+
+    /**
+     * @var Collection<int, Urgenceevent>
+     */
+    #[ORM\OneToMany(targetEntity: Urgenceevent::class, mappedBy: 'idEvent')]
+    private Collection $urgenceevents;
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();
@@ -171,6 +213,13 @@ class Event
         $this->contrats = new ArrayCollection();
         $this->idSalarie = new ArrayCollection();
         $this->diffusionsalprests = new ArrayCollection();
+        $this->ursoperations = new ArrayCollection();
+        $this->fraffectations = new ArrayCollection();
+        $this->connexionmslgevents = new ArrayCollection();
+        $this->paniers = new ArrayCollection();
+        $this->connexionpanierpubs = new ArrayCollection();
+        $this->prestations = new ArrayCollection();
+        $this->urgenceevents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -770,6 +819,216 @@ class Event
             // set the owning side to null (unless already changed)
             if ($diffusionsalprest->getIdEvent() === $this) {
                 $diffusionsalprest->setIdEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Ursoperation>
+     */
+    public function getUrsoperations(): Collection
+    {
+        return $this->ursoperations;
+    }
+
+    public function addUrsoperation(Ursoperation $ursoperation): static
+    {
+        if (!$this->ursoperations->contains($ursoperation)) {
+            $this->ursoperations->add($ursoperation);
+            $ursoperation->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUrsoperation(Ursoperation $ursoperation): static
+    {
+        if ($this->ursoperations->removeElement($ursoperation)) {
+            // set the owning side to null (unless already changed)
+            if ($ursoperation->getIdEvent() === $this) {
+                $ursoperation->setIdEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Fraffectation>
+     */
+    public function getFraffectations(): Collection
+    {
+        return $this->fraffectations;
+    }
+
+    public function addFraffectation(Fraffectation $fraffectation): static
+    {
+        if (!$this->fraffectations->contains($fraffectation)) {
+            $this->fraffectations->add($fraffectation);
+            $fraffectation->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFraffectation(Fraffectation $fraffectation): static
+    {
+        if ($this->fraffectations->removeElement($fraffectation)) {
+            // set the owning side to null (unless already changed)
+            if ($fraffectation->getIdEvent() === $this) {
+                $fraffectation->setIdEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Connexionmslgevent>
+     */
+    public function getConnexionmslgevents(): Collection
+    {
+        return $this->connexionmslgevents;
+    }
+
+    public function addConnexionmslgevent(Connexionmslgevent $connexionmslgevent): static
+    {
+        if (!$this->connexionmslgevents->contains($connexionmslgevent)) {
+            $this->connexionmslgevents->add($connexionmslgevent);
+            $connexionmslgevent->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConnexionmslgevent(Connexionmslgevent $connexionmslgevent): static
+    {
+        if ($this->connexionmslgevents->removeElement($connexionmslgevent)) {
+            // set the owning side to null (unless already changed)
+            if ($connexionmslgevent->getIdEvent() === $this) {
+                $connexionmslgevent->setIdEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Panier>
+     */
+    public function getPaniers(): Collection
+    {
+        return $this->paniers;
+    }
+
+    public function addPanier(Panier $panier): static
+    {
+        if (!$this->paniers->contains($panier)) {
+            $this->paniers->add($panier);
+            $panier->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanier(Panier $panier): static
+    {
+        if ($this->paniers->removeElement($panier)) {
+            // set the owning side to null (unless already changed)
+            if ($panier->getIdEvent() === $this) {
+                $panier->setIdEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Connexionpanierpub>
+     */
+    public function getConnexionpanierpubs(): Collection
+    {
+        return $this->connexionpanierpubs;
+    }
+
+    public function addConnexionpanierpub(Connexionpanierpub $connexionpanierpub): static
+    {
+        if (!$this->connexionpanierpubs->contains($connexionpanierpub)) {
+            $this->connexionpanierpubs->add($connexionpanierpub);
+            $connexionpanierpub->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConnexionpanierpub(Connexionpanierpub $connexionpanierpub): static
+    {
+        if ($this->connexionpanierpubs->removeElement($connexionpanierpub)) {
+            // set the owning side to null (unless already changed)
+            if ($connexionpanierpub->getIdEvent() === $this) {
+                $connexionpanierpub->setIdEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Prestation>
+     */
+    public function getPrestations(): Collection
+    {
+        return $this->prestations;
+    }
+
+    public function addPrestation(Prestation $prestation): static
+    {
+        if (!$this->prestations->contains($prestation)) {
+            $this->prestations->add($prestation);
+            $prestation->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrestation(Prestation $prestation): static
+    {
+        if ($this->prestations->removeElement($prestation)) {
+            // set the owning side to null (unless already changed)
+            if ($prestation->getIdEvent() === $this) {
+                $prestation->setIdEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Urgenceevent>
+     */
+    public function getUrgenceevents(): Collection
+    {
+        return $this->urgenceevents;
+    }
+
+    public function addUrgenceevent(Urgenceevent $urgenceevent): static
+    {
+        if (!$this->urgenceevents->contains($urgenceevent)) {
+            $this->urgenceevents->add($urgenceevent);
+            $urgenceevent->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUrgenceevent(Urgenceevent $urgenceevent): static
+    {
+        if ($this->urgenceevents->removeElement($urgenceevent)) {
+            // set the owning side to null (unless already changed)
+            if ($urgenceevent->getIdEvent() === $this) {
+                $urgenceevent->setIdEvent(null);
             }
         }
 

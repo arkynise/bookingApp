@@ -19,43 +19,43 @@ class Agence
     #[ORM\Column(length: 255)]
     private ?string $fax = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name:'Nom',length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255,name:"Siret")]
+    #[ORM\Column(name:'Siret',length: 255)]
     private ?string $Siret = null;
 
     #[ORM\Column(name:"CodeAPE",length: 255,)]
     private ?string $CodeAPE = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[ORM\Column(name:'PiedContart',type: Types::TEXT, nullable: true)]
     private ?string $PiedContart = null;
 
     #[ORM\Column(length: 255)]
     private ?string $tel = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name:'AdrRue',length: 255)]
     private ?string $AdrRue = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name:'AdrNum',length: 255)]
     private ?string $AdrNum = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name:'AdrVille',length: 255)]
     private ?string $AdrVille = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name:'AdrCodepostal',length: 255)]
     private ?string $AdrCodepostal = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name:'AuthNom',length: 255)]
     private ?string $AuthNom = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name:'AuthPrenom',length: 255)]
     private ?string $AuthPrenom = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name:'AuthPasword',length: 255)]
     private ?string $AuthPasword = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name:'NomEntite',length: 255)]
     private ?string $NomEntite = null;
 
     /**

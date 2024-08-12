@@ -17,6 +17,7 @@ class Catalogue
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'catalogues')]
+    #[ORM\JoinColumn(name:"groupe", referencedColumnName:"id")]
     private ?Groupeuser $groupe = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]

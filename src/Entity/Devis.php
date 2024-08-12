@@ -210,6 +210,9 @@ class Devis
     #[ORM\OneToMany(targetEntity: Prestationdevis::class, mappedBy: 'idDevis')]
     private Collection $prestationdevis;
 
+    #[ORM\ManyToOne(inversedBy: 'devis')]
+    private ?client $RechercheClient = null;
+
     public function __construct()
     {
         $this->devisusers = new ArrayCollection();
@@ -1006,6 +1009,18 @@ class Devis
                 $prestationdevi->setIdDevis(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRechercheClient(): ?client
+    {
+        return $this->RechercheClient;
+    }
+
+    public function setRechercheClient(?client $RechercheClient): static
+    {
+        $this->RechercheClient = $RechercheClient;
 
         return $this;
     }

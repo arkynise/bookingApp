@@ -14,22 +14,23 @@ class Avisnotation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[ORM\Column(name:'dateCreation',type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateCreation = null;
 
-    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    #[ORM\Column(name:'Avis',type: Types::SMALLINT, nullable: true)]
     private ?int $Avis = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(name:'IdUserWrite',nullable: true)]
     private ?int $IdUserWrite = null;
 
     #[ORM\ManyToOne(inversedBy: 'avisnotations')]
+    #[ORM\JoinColumn(name:"IdCandidat_id", referencedColumnName:"id")]
     private ?Salarie $IdCandidat = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(name:'IdBu',nullable: true)]
     private ?int $IdBu = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'BuLibelle',length: 255, nullable: true)]
     private ?string $BuLibelle = null;
 
     public function getId(): ?int

@@ -204,6 +204,30 @@ class Event
     #[ORM\OneToMany(targetEntity: Urgenceevent::class, mappedBy: 'idEvent')]
     private Collection $urgenceevents;
 
+    /**
+     * @var Collection<int, Eventinfo>
+     */
+    #[ORM\OneToMany(targetEntity: Eventinfo::class, mappedBy: 'idEvent')]
+    private Collection $eventinfos;
+
+    /**
+     * @var Collection<int, Htagevent>
+     */
+    #[ORM\OneToMany(targetEntity: Htagevent::class, mappedBy: 'idEvent')]
+    private Collection $htagevents;
+
+    /**
+     * @var Collection<int, Documentevent>
+     */
+    #[ORM\OneToMany(targetEntity: Documentevent::class, mappedBy: 'idEvent')]
+    private Collection $documentevents;
+
+    /**
+     * @var Collection<int, Brouillard>
+     */
+    #[ORM\OneToMany(targetEntity: Brouillard::class, mappedBy: 'idEvent')]
+    private Collection $brouillards;
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();
@@ -220,6 +244,10 @@ class Event
         $this->connexionpanierpubs = new ArrayCollection();
         $this->prestations = new ArrayCollection();
         $this->urgenceevents = new ArrayCollection();
+        $this->eventinfos = new ArrayCollection();
+        $this->htagevents = new ArrayCollection();
+        $this->documentevents = new ArrayCollection();
+        $this->brouillards = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -1029,6 +1057,126 @@ class Event
             // set the owning side to null (unless already changed)
             if ($urgenceevent->getIdEvent() === $this) {
                 $urgenceevent->setIdEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Eventinfo>
+     */
+    public function getEventinfos(): Collection
+    {
+        return $this->eventinfos;
+    }
+
+    public function addEventinfo(Eventinfo $eventinfo): static
+    {
+        if (!$this->eventinfos->contains($eventinfo)) {
+            $this->eventinfos->add($eventinfo);
+            $eventinfo->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventinfo(Eventinfo $eventinfo): static
+    {
+        if ($this->eventinfos->removeElement($eventinfo)) {
+            // set the owning side to null (unless already changed)
+            if ($eventinfo->getIdEvent() === $this) {
+                $eventinfo->setIdEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Htagevent>
+     */
+    public function getHtagevents(): Collection
+    {
+        return $this->htagevents;
+    }
+
+    public function addHtagevent(Htagevent $htagevent): static
+    {
+        if (!$this->htagevents->contains($htagevent)) {
+            $this->htagevents->add($htagevent);
+            $htagevent->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHtagevent(Htagevent $htagevent): static
+    {
+        if ($this->htagevents->removeElement($htagevent)) {
+            // set the owning side to null (unless already changed)
+            if ($htagevent->getIdEvent() === $this) {
+                $htagevent->setIdEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Documentevent>
+     */
+    public function getDocumentevents(): Collection
+    {
+        return $this->documentevents;
+    }
+
+    public function addDocumentevent(Documentevent $documentevent): static
+    {
+        if (!$this->documentevents->contains($documentevent)) {
+            $this->documentevents->add($documentevent);
+            $documentevent->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocumentevent(Documentevent $documentevent): static
+    {
+        if ($this->documentevents->removeElement($documentevent)) {
+            // set the owning side to null (unless already changed)
+            if ($documentevent->getIdEvent() === $this) {
+                $documentevent->setIdEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Brouillard>
+     */
+    public function getBrouillards(): Collection
+    {
+        return $this->brouillards;
+    }
+
+    public function addBrouillard(Brouillard $brouillard): static
+    {
+        if (!$this->brouillards->contains($brouillard)) {
+            $this->brouillards->add($brouillard);
+            $brouillard->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBrouillard(Brouillard $brouillard): static
+    {
+        if ($this->brouillards->removeElement($brouillard)) {
+            // set the owning side to null (unless already changed)
+            if ($brouillard->getIdEvent() === $this) {
+                $brouillard->setIdEvent(null);
             }
         }
 

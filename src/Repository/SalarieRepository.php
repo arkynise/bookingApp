@@ -16,6 +16,25 @@ class SalarieRepository extends ServiceEntityRepository
         parent::__construct($registry, Salarie::class);
     }
 
+
+
+
+    public function getEngVide()
+    {
+        $queryBuilder = $this->_em->createQueryBuilder();
+
+        $queryBuilder->select('count(s.id)')
+            ->from('testsiteBundle:Salarie', 's')
+            ->where('s.Exclu = 0      OR   s.Exclu IS  NULL ')
+            ->andWhere('s.natif  =:varEvent  ')
+            ->setParameter('varEvent',"EVENTS")
+            ->andWhere('s.AccordSig IS  NULL  ')
+
+        ;
+
+        return $queryBuilder->getQuery()
+            ->getSingleScalarResult();
+    }
 //    /**
 //     * @return Salarie[] Returns an array of Salarie objects
 //     */

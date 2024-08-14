@@ -14,16 +14,18 @@ class Salarienote
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[ORM\Column(name:'Libelle',type: Types::TEXT, nullable: true)]
     private ?string $Libelle = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[ORM\Column(name:'DateCreation',type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $DateCreation = null;
 
     #[ORM\ManyToOne(inversedBy: 'salarienotes')]
+    #[ORM\JoinColumn(name:"Ecritpar_id", referencedColumnName:"id")]
     private ?User $Ecritpar = null;
 
     #[ORM\ManyToOne(inversedBy: 'salarienotes')]
+    #[ORM\JoinColumn(name:"IdSalarie_id", referencedColumnName:"id")]
     private ?Salarie $IdSalarie = null;
 
     public function getId(): ?int

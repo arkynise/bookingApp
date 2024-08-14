@@ -16,19 +16,20 @@ class Message
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[ORM\Column(name:'dateCreation',type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateCreation = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[ORM\Column(name:'datePublication',type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $datePublication = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $text = null;
 
     #[ORM\ManyToOne(inversedBy: 'messages')]
+    #[ORM\JoinColumn(name:"idEvent_id", referencedColumnName:"id")]
     private ?Event $idEvent = null;
 
-    #[ORM\Column(type: Types::SMALLINT)]
+    #[ORM\Column(name:'PubMsg',type: Types::SMALLINT)]
     private ?int $PubMsg = null;
 
     /**
@@ -37,9 +38,16 @@ class Message
     #[ORM\OneToMany(targetEntity: Messageprestation::class, mappedBy: 'idMsg')]
     private Collection $messageprestations;
 
+    /**
+     * @var Collection<int, Diffusionsalprest>
+     */
+    #[ORM\OneToMany(targetEntity: Diffusionsalprest::class, mappedBy: 'idMessage')]
+    private Collection $diffusionsalprests;
+
     public function __construct()
     {
         $this->messageprestations = new ArrayCollection();
+        $this->diffusionsalprests = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -131,6 +139,36 @@ class Message
             // set the owning side to null (unless already changed)
             if ($messageprestation->getIdMsg() === $this) {
                 $messageprestation->setIdMsg(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Diffusionsalprest>
+     */
+    public function getDiffusionsalprests(): Collection
+    {
+        return $this->diffusionsalprests;
+    }
+
+    public function addDiffusionsalprest(Diffusionsalprest $diffusionsalprest): static
+    {
+        if (!$this->diffusionsalprests->contains($diffusionsalprest)) {
+            $this->diffusionsalprests->add($diffusionsalprest);
+            $diffusionsalprest->setIdMessage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDiffusionsalprest(Diffusionsalprest $diffusionsalprest): static
+    {
+        if ($this->diffusionsalprests->removeElement($diffusionsalprest)) {
+            // set the owning side to null (unless already changed)
+            if ($diffusionsalprest->getIdMessage() === $this) {
+                $diffusionsalprest->setIdMessage(null);
             }
         }
 

@@ -19,10 +19,11 @@ class Groupeuser
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
-    private ?int $EnMarch = null;
+    #[ORM\Column(name:'EnMarche',nullable: true)]
+    private ?bool $EnMarch = null;
 
     #[ORM\ManyToOne(inversedBy: 'groupeusers')]
+    #[ORM\JoinColumn(name:"AttacherAgence_id", referencedColumnName:"id")]
     private ?Agence $AttacherAgence = null;
 
     /**
@@ -73,6 +74,12 @@ class Groupeuser
     #[ORM\OneToMany(targetEntity: Messagepop::class, mappedBy: 'groupe')]
     private Collection $messagepops;
 
+    #[ORM\Column(name:'colorBu',length: 255)]
+    private ?string $colorBu = null;
+
+    #[ORM\Column(name:'rechercheHtag',nullable: true)]
+    private ?bool $rechercheHtag = null;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
@@ -102,12 +109,12 @@ class Groupeuser
         return $this;
     }
 
-    public function getEnMarch(): ?int
+    public function isEnMarch(): ?bool
     {
         return $this->EnMarch;
     }
 
-    public function setEnMarch(?int $EnMarch): static
+    public function setEnMarch(?bool $EnMarch): static
     {
         $this->EnMarch = $EnMarch;
 
@@ -362,6 +369,30 @@ class Groupeuser
                 $messagepop->setGroupe(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getColorBu(): ?string
+    {
+        return $this->colorBu;
+    }
+
+    public function setColorBu(string $colorBu): static
+    {
+        $this->colorBu = $colorBu;
+
+        return $this;
+    }
+
+    public function isRechercheHtag(): ?bool
+    {
+        return $this->rechercheHtag;
+    }
+
+    public function setRechercheHtag(?bool $rechercheHtag): static
+    {
+        $this->rechercheHtag = $rechercheHtag;
 
         return $this;
     }

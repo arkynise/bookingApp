@@ -22,33 +22,33 @@ class Devis
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $marque = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'grilleTarifaireSurnom',length: 255, nullable: true)]
     private ?string $grilleTarifaireSurnom = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'infRetourClient',length: 255, nullable: true)]
     private ?string $infRetourClient = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'UserWrite',length: 255, nullable: true)]
     private ?string $UserWrite = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $commercial = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(name:'IdCommercial',nullable: true)]
     private ?int $IdCommercial = null;
 
   
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 2, scale: 2, nullable: true)]
+    #[ORM\Column(name:'RepasPrix',type: Types::DECIMAL, precision: 2, scale: 2, nullable: true)]
     private ?string $RepasPrix = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(name:'RepasQte',nullable: true)]
     private ?int $RepasQte = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'RepasTotal',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $RepasTotal = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'RepasObservation',length: 255, nullable: true)]
     private ?string $RepasObservation = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -64,7 +64,7 @@ class Devis
     private ?\DateTimeInterface $date_debut = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $daet_fin = null;
+    private ?\DateTimeInterface $date_fin = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $heure_debut = null;
@@ -76,13 +76,13 @@ class Devis
     private ?\DateTimeInterface $date_devis = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $status = null;
+    private ?string $statut = null;
 
     #[ORM\Column(length: 255)]
     private ?string $repas = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
-    private ?string $accompte = null;
+    private ?string $acompte = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $booster = null;
@@ -90,49 +90,49 @@ class Devis
     #[ORM\Column(nullable: true)]
     private ?float $remise = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(name:'NbDupliquer',nullable: true)]
     private ?int $NbDupliquer = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'TotalPrestation',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $totalPrestation = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'TotalPrestationSansB',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $totalPrestationSansB = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    #[ORM\Column(name:'TotalFrais',type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $TotalFrais = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'TotalBrut',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $TotalBrut = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'RemiseA',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $RemisA = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'RemiseP',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $RemisP = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'MasseSalarial',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $MasseSalarial = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'Tva',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $Tva = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'TvaA',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $TvaA = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'TvaATotal',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $TvaTotal = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(name:'ReglementFacture',nullable: true)]
     private ?int $ReglementFacture = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'TotalGeneralTTC',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $TotalGeneralTTc = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'AcompteHT',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $AcompteHT = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'AcompteP',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $AcompteP = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
@@ -144,52 +144,50 @@ class Devis
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $coef_net = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'NumeroDevis',length: 255, nullable: true)]
     private ?string $NumeroDevis = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'DevisForfait',length: 255, nullable: true)]
     private ?string $DevisForfait = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(name:'IdBrouillard',nullable: true)]
     private ?int $IdBrouillard = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'Groupe',length: 255, nullable: true)]
     private ?string $Groupe = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'UserAppart',length: 255, nullable: true)]
     private ?string $UserAppart = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $infUniforme = null;
+    #[ORM\Column(name:'InfUniforme',type: Types::TEXT, nullable: true)]
+    private ?string $InfUniforme = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'ClientChoisi',length: 255, nullable: true)]
     private ?string $ClientChois = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[ORM\Column(name:'Adresse',type: Types::TEXT, nullable: true)]
     private ?string $Adress = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[ORM\Column(name:'Adresse2',type: Types::TEXT, nullable: true)]
     private ?string $Adress2 = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'Contact',length: 255, nullable: true)]
     private ?string $Contact = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $version = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'Contact2',length: 255, nullable: true)]
     private ?string $Contact2 = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'GrilleTarifaire',length: 255, nullable: true)]
     private ?string $GrilleTarifaire = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $RecherchClient = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'obsLieu',length: 255, nullable: true)]
     private ?string $obsLieu = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(name:'IdUserWrite',nullable: true)]
     private ?int $IdUserWrite = null;
 
     /**
@@ -211,7 +209,38 @@ class Devis
     private Collection $prestationdevis;
 
     #[ORM\ManyToOne(inversedBy: 'devis')]
+    #[ORM\JoinColumn(name:"RechercheClient", referencedColumnName:"id")]
     private ?client $RechercheClient = null;
+
+    #[ORM\Column(name:'IdContact2',nullable: true)]
+    private ?int $IdContact2 = null;
+
+    #[ORM\Column(name:'IdDevisRacine',nullable: true)]
+    private ?int $IdDevisRacine = null;
+
+    #[ORM\Column(name:'IdDevisPere',nullable: true)]
+    private ?int $IdDevisPere = null;
+
+    #[ORM\Column(name:'IdAdresse2',nullable: true)]
+    private ?int $IdAdresse2 = null;
+
+    #[ORM\Column(name:'IdContact1',nullable: true)]
+    private ?int $IdContact1 = null;
+
+    #[ORM\Column(name:'IdAdresse1',nullable: true)]
+    private ?int $IdAdresse1 = null;
+
+    #[ORM\Column(name:'IdEvent',nullable: true)]
+    private ?int $IdEvent = null;
+
+    #[ORM\Column(name:'apartirFdr',nullable: true)]
+    private ?bool $apartirFdr = null;
+
+    #[ORM\Column(name:'modeSalon',nullable: true)]
+    private ?bool $modeSalon = null;
+
+    #[ORM\Column(name:'ModeRecalcule',nullable: true)]
+    private ?bool $ModeRecalcule = null;
 
     public function __construct()
     {
@@ -409,12 +438,12 @@ class Devis
 
     public function getDaetFin(): ?\DateTimeInterface
     {
-        return $this->daet_fin;
+        return $this->date_fin;
     }
 
-    public function setDaetFin(?\DateTimeInterface $daet_fin): static
+    public function setDaetFin(?\DateTimeInterface $date_fin): static
     {
-        $this->daet_fin = $daet_fin;
+        $this->date_fin = $date_fin;
 
         return $this;
     }
@@ -455,14 +484,14 @@ class Devis
         return $this;
     }
 
-    public function getStatus(): ?string
+    public function getStatut(): ?string
     {
-        return $this->status;
+        return $this->statut;
     }
 
-    public function setStatus(?string $status): static
+    public function setStatut(?string $statut): static
     {
-        $this->status = $status;
+        $this->statut = $statut;
 
         return $this;
     }
@@ -479,14 +508,14 @@ class Devis
         return $this;
     }
 
-    public function getAccompte(): ?string
+    public function getAcompte(): ?string
     {
-        return $this->accompte;
+        return $this->acompte;
     }
 
-    public function setAccompte(?string $accompte): static
+    public function setAcompte(?string $acompte): static
     {
-        $this->accompte = $accompte;
+        $this->acompte = $acompte;
 
         return $this;
     }
@@ -793,12 +822,12 @@ class Devis
 
     public function getInfUniforme(): ?string
     {
-        return $this->infUniforme;
+        return $this->InfUniforme;
     }
 
-    public function setInfUniforme(?string $infUniforme): static
+    public function setInfUniforme(?string $InfUniforme): static
     {
-        $this->infUniforme = $infUniforme;
+        $this->InfUniforme = $InfUniforme;
 
         return $this;
     }
@@ -887,17 +916,6 @@ class Devis
         return $this;
     }
 
-    public function getRecherchClient(): ?int
-    {
-        return $this->RecherchClient;
-    }
-
-    public function setRecherchClient(?int $RecherchClient): static
-    {
-        $this->RecherchClient = $RecherchClient;
-
-        return $this;
-    }
 
     public function getObsLieu(): ?string
     {
@@ -1021,6 +1039,126 @@ class Devis
     public function setRechercheClient(?client $RechercheClient): static
     {
         $this->RechercheClient = $RechercheClient;
+
+        return $this;
+    }
+
+    public function getIdContact2(): ?int
+    {
+        return $this->IdContact2;
+    }
+
+    public function setIdContact2(?int $IdContact2): static
+    {
+        $this->IdContact2 = $IdContact2;
+
+        return $this;
+    }
+
+    public function getIdDevisRacine(): ?int
+    {
+        return $this->IdDevisRacine;
+    }
+
+    public function setIdDevisRacine(?int $IdDevisRacine): static
+    {
+        $this->IdDevisRacine = $IdDevisRacine;
+
+        return $this;
+    }
+
+    public function getIdDevisPere(): ?int
+    {
+        return $this->IdDevisPere;
+    }
+
+    public function setIdDevisPere(?int $IdDevisPere): static
+    {
+        $this->IdDevisPere = $IdDevisPere;
+
+        return $this;
+    }
+
+    public function getIdAdresse2(): ?int
+    {
+        return $this->IdAdresse2;
+    }
+
+    public function setIdAdresse2(?int $IdAdresse2): static
+    {
+        $this->IdAdresse2 = $IdAdresse2;
+
+        return $this;
+    }
+
+    public function getIdContact1(): ?int
+    {
+        return $this->IdContact1;
+    }
+
+    public function setIdContact1(?int $IdContact1): static
+    {
+        $this->IdContact1 = $IdContact1;
+
+        return $this;
+    }
+
+    public function getIdAdresse1(): ?int
+    {
+        return $this->IdAdresse1;
+    }
+
+    public function setIdAdresse1(?int $IdAdresse1): static
+    {
+        $this->IdAdresse1 = $IdAdresse1;
+
+        return $this;
+    }
+
+    public function getIdEvent(): ?int
+    {
+        return $this->IdEvent;
+    }
+
+    public function setIdEvent(?int $IdEvent): static
+    {
+        $this->IdEvent = $IdEvent;
+
+        return $this;
+    }
+
+    public function isApartirFdr(): ?bool
+    {
+        return $this->apartirFdr;
+    }
+
+    public function setApartirFdr(?bool $apartirFdr): static
+    {
+        $this->apartirFdr = $apartirFdr;
+
+        return $this;
+    }
+
+    public function isModeSalon(): ?bool
+    {
+        return $this->modeSalon;
+    }
+
+    public function setModeSalon(?bool $modeSalon): static
+    {
+        $this->modeSalon = $modeSalon;
+
+        return $this;
+    }
+
+    public function isModeRecalcule(): ?bool
+    {
+        return $this->ModeRecalcule;
+    }
+
+    public function setModeRecalcule(?bool $ModeRecalcule): static
+    {
+        $this->ModeRecalcule = $ModeRecalcule;
 
         return $this;
     }

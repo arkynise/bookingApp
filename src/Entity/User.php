@@ -32,28 +32,28 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
     #[ORM\Column(length: 255)]
     private ?string $salt = null;
 
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $locked = null;
+    #[ORM\Column]
+    private ?bool $locked = null;
 
     #[ORM\Column]
     private ?bool $expired = null;
 
     #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $expired_at = null;
+    private ?\DateTimeImmutable $expires_at = null;
 
-    #[ORM\Column(type: Types::SMALLINT)]
-    private ?int $credentials_expired = null;
+    #[ORM\Column]
+    private ?bool $credentials_expired = null;
 
     #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $credentials_expired_at = null;
+    private ?\DateTimeImmutable $credentials_expire_at = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'motPasseMail',length: 255, nullable: true)]
     private ?string $motPasseMail = null;
 
     #[ORM\Column(length: 255)]
     private ?string $civilite = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name:'RoleUser',length: 255)]
     private ?string $RoleUser = null;
 
     #[ORM\Column(length: 255)]
@@ -87,18 +87,19 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
     private ?string $message = null;
 
     #[ORM\ManyToOne]
+    #[ORM\JoinColumn(name:"signatureMail_id", referencedColumnName:"id")]
     private ?Media $signatureMail = null;
 
-    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
-    private ?int $OnApi = null;
+    #[ORM\Column(name:'OnApi',nullable: true)]
+    private ?bool $OnApi = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[ORM\Column(name:'derCnxNote',type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $derCnxNote = null;
 
-    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
-    private ?int $RespGroupe = null;
-
     #[ORM\Column(nullable: true)]
+    private ?bool $RespGroupe = null;
+
+    #[ORM\Column(name:'numTrie',nullable: true)]
     private ?int $numTrie = null;
 
     /**
@@ -134,8 +135,8 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
     /**
      * @var Collection<int, Observent>
      */
-    #[ORM\OneToMany(targetEntity: Observent::class, mappedBy: 'ecritpar')]
-    private Collection $observents;
+    #[ORM\OneToMany(targetEntity: Obsevent::class, mappedBy: 'ecritpar')]
+    private Collection $obsevents;
 
     /**
      * @var Collection<int, Event>
@@ -149,6 +150,12 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
     #[ORM\OneToMany(targetEntity: Devis::class, mappedBy: 'IdUserWrite')]
     private Collection $devis;
 
+    /**
+     * @var Collection<int, Eventurssaf>
+     */
+    #[ORM\OneToMany(targetEntity: Eventurssaf::class, mappedBy: 'id_user')]
+    private Collection $eventurssafs;
+
     public function __construct()
     {
         parent::__construct();
@@ -158,9 +165,10 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
         $this->salarienotes = new ArrayCollection();
         $this->eventusers = new ArrayCollection();
         $this->userGroupeusers = new ArrayCollection();
-        $this->observents = new ArrayCollection();
+        $this->obsevents = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->devis = new ArrayCollection();
+        $this->eventurssafs = new ArrayCollection();
     }
 
     public function getImage(): ?Media
@@ -211,12 +219,12 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
         return $this;
     }
 
-    public function getLocked(): ?int
+    public function isLocked(): ?bool
     {
         return $this->locked;
     }
 
-    public function setLocked(int $locked): static
+    public function setLocked(bool $locked): static
     {
         $this->locked = $locked;
 
@@ -237,22 +245,22 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
 
     public function getExpiredAt(): ?\DateTimeImmutable
     {
-        return $this->expired_at;
+        return $this->expires_at;
     }
 
-    public function setExpiredAt(?\DateTimeImmutable $expired_at): static
+    public function setExpiredAt(?\DateTimeImmutable $expires_at): static
     {
-        $this->expired_at = $expired_at;
+        $this->expires_at = $expires_at;
 
         return $this;
     }
 
-    public function getCredentialsExpired(): ?int
+    public function isCredentialsExpired(): ?bool
     {
         return $this->credentials_expired;
     }
 
-    public function setCredentialsExpired(int $credentials_expired): static
+    public function setCredentialsExpired(bool $credentials_expired): static
     {
         $this->credentials_expired = $credentials_expired;
 
@@ -261,12 +269,12 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
 
     public function getCredentialsExpiredAt(): ?\DateTimeImmutable
     {
-        return $this->credentials_expired_at;
+        return $this->credentials_expire_at;
     }
 
-    public function setCredentialsExpiredAt(?\DateTimeImmutable $credentials_expired_at): static
+    public function setCredentialsExpiredAt(?\DateTimeImmutable $credentials_expire_at): static
     {
-        $this->credentials_expired_at = $credentials_expired_at;
+        $this->credentials_expire_at = $credentials_expire_at;
 
         return $this;
     }
@@ -439,12 +447,12 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
         return $this;
     }
 
-    public function getOnApi(): ?int
+    public function isOnApi(): ?bool
     {
         return $this->OnApi;
     }
 
-    public function setOnApi(?int $OnApi): static
+    public function setOnApi(?bool $OnApi): static
     {
         $this->OnApi = $OnApi;
 
@@ -463,12 +471,12 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
         return $this;
     }
 
-    public function getRespGroupe(): ?int
+    public function isRespGroupe(): ?bool
     {
         return $this->RespGroupe;
     }
 
-    public function setRespGroupe(?int $RespGroupe): static
+    public function setRespGroupe(?bool $RespGroupe): static
     {
         $this->RespGroupe = $RespGroupe;
 
@@ -642,25 +650,25 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
      */
     public function getObservents(): Collection
     {
-        return $this->observents;
+        return $this->obsevents;
     }
 
-    public function addObservent(Observent $observent): static
+    public function addObservent(Observent $obsevent): static
     {
-        if (!$this->observents->contains($observent)) {
-            $this->observents->add($observent);
-            $observent->setEcritpar($this);
+        if (!$this->obsevents->contains($obsevent)) {
+            $this->obsevents->add($obsevent);
+            $obsevent->setEcritpar($this);
         }
 
         return $this;
     }
 
-    public function removeObservent(Observent $observent): static
+    public function removeObservent(Observent $obsevent): static
     {
-        if ($this->observents->removeElement($observent)) {
+        if ($this->obsevents->removeElement($obsevent)) {
             // set the owning side to null (unless already changed)
-            if ($observent->getEcritpar() === $this) {
-                $observent->setEcritpar(null);
+            if ($obsevent->getEcritpar() === $this) {
+                $obsevent->setEcritpar(null);
             }
         }
 
@@ -686,6 +694,18 @@ class User extends BaseUser implements UserInterface, PasswordAuthenticatedUserI
     {
         return $this->devis;
     }
+
+    /**
+     * @return Collection<int, Eventurssaf>
+     */
+    public function getEventurssafs(): Collection
+    {
+        return $this->eventurssafs;
+    }
+
+   
+
+  
 
 
 

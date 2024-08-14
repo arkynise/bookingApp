@@ -8,17 +8,17 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: NaturecontartRepository::class)]
-class Naturecontart
+class Naturecontrat
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'CodeNature',length: 255, nullable: true)]
     private ?string $CodeNature = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'Libelle',length: 255, nullable: true)]
     private ?string $Libelle = null;
 
     /**

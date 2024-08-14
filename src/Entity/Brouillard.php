@@ -209,7 +209,7 @@ class Brouillard
     #[ORM\Column(name:'RemiseA',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $RemiseA = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(name:'RemiseP',type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
     private ?string $RemiseP = null;
 
     #[ORM\Column(name:'ObsRemise',length: 255, nullable: true)]
@@ -231,6 +231,12 @@ class Brouillard
     #[ORM\ManyToOne(inversedBy: 'brouillards')]
     #[ORM\JoinColumn(name:"idEvent", referencedColumnName:"id")]
     private ?event $idEvent = null;
+
+    #[ORM\Column(name:'dureQuart',nullable: true)]
+    private ?int $dureQuart = null;
+
+    #[ORM\Column(name:'modeJ',nullable: true)]
+    private ?bool $modeJ = null;
 
     public function getId(): ?int
     {
@@ -1097,6 +1103,30 @@ class Brouillard
     public function setMoisBr(?\DateTimeInterface $moisBr): static
     {
         $this->moisBr = $moisBr;
+
+        return $this;
+    }
+
+    public function getDureQuart(): ?int
+    {
+        return $this->dureQuart;
+    }
+
+    public function setDureQuart(?int $dureQuart): static
+    {
+        $this->dureQuart = $dureQuart;
+
+        return $this;
+    }
+
+    public function isModeJ(): ?bool
+    {
+        return $this->modeJ;
+    }
+
+    public function setModeJ(?bool $modeJ): static
+    {
+        $this->modeJ = $modeJ;
 
         return $this;
     }

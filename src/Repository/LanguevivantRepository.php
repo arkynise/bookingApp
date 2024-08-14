@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Languevivant;
+use App\Entity\Languevivante;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -13,7 +13,7 @@ class LanguevivantRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Languevivant::class);
+        parent::__construct($registry, Languevivante::class);
     }
 
     //    /**

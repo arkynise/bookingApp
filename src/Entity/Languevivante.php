@@ -8,35 +8,35 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LanguevivantRepository::class)]
-class Languevivant
+class Languevivante
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'lvUn',length: 255, nullable: true)]
     private ?string $lvUn = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'NivUn',length: 255, nullable: true)]
     private ?string $NivUn = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'lvDeux',length: 255, nullable: true)]
     private ?string $IvDeux = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'NivDeux',length: 255, nullable: true)]
     private ?string $NivDeux = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'lvTrois',length: 255, nullable: true)]
     private ?string $IvTrois = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'NivTrois',length: 255, nullable: true)]
     private ?string $NivTrois = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'lvQuatre',length: 255, nullable: true)]
     private ?string $IvQuatre = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(name:'NivQuatre',length: 255, nullable: true)]
     private ?string $NivQuatre = null;
 
     /**

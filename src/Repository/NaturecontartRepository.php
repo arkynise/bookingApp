@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Naturecontart;
+use App\Entity\Naturecontrat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -13,7 +13,7 @@ class NaturecontartRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Naturecontart::class);
+        parent::__construct($registry, Naturecontrat::class);
     }
 
 //    /**

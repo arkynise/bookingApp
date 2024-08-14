@@ -21,13 +21,20 @@ security:
             stateless: false
             provider: nucleos_user
             form_login:
-                login_path: startingPoint
+                login_path: loginForm
                 check_path: /login_check
                 username_parameter: username
                 password_parameter: password
-                default_target_path: /dashboard 
-                failure_path: /   # Optional: Redirect to login page on failure
+                default_target_path: / 
+                failure_path: loginForm   # Optional: Redirect to login page on failure
                 failure_forward: true
-            logout:
-                path: /logout
-                target: /
+
+    access_control:
+
+
+        - { path: ^/dashboard, roles: IS_AUTHENTICATED_FULLY }
+        
+
+        
+    access_denied_url: loginForm
+    
